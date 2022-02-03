@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+	public GameObject obstacle;
+	public GameObject icewall;
 
 	public float speed;
 	public TextMeshProUGUI countText;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
 		SetCountText();
 
 		winTextObject.SetActive(false);
+		obstacle.SetActive(true);
+		icewall.SetActive(true);
 	}
 
 	void FixedUpdate()
@@ -60,6 +64,16 @@ public class PlayerController : MonoBehaviour
 	void SetCountText()
 	{
 		countText.text = "Count: " + count.ToString();
+
+		if (count >= 1)
+		{
+			obstacle.SetActive(false);
+		}
+
+		else if (count >= 8) 
+		{
+			icewall.SetActive(false);
+		}
 
 		if (count >= 12)
 		{
